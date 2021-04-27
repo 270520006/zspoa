@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/springboot/springboot.iml" filepath="$PROJECT_DIR$/springboot/springboot.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/springcloud_vue.iml" filepath="$PROJECT_DIR$/.idea/springcloud_vue.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot/zspoa-activiti/zspoa-activiti.iml" filepath="$PROJECT_DIR$/springboot/zspoa-activiti/zspoa-activiti.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot/zspoa-common/zspoa-common.iml" filepath="$PROJECT_DIR$/springboot/zspoa-common/zspoa-common.iml" />
     </modules>
