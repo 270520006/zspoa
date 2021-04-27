@@ -12,14 +12,14 @@
     <packaging>pom</packaging>
 
     <modules>
-<!--        <module>zspmall-product</module>-->
-<!--        <module>zspmall-coupon</module>-->
-<!--        <module>zspmall-member</module>-->
-<!--        <module>zspmall-order</module>-->
-<!--        <module>zspmall-ware</module>-->
-<!--        <module>renren-fast</module>-->
-<!--        <module>renren-generator</module>-->
-<!--        <module>zspmall-common</module>-->
+        <!--        <module>zspmall-product</module>-->
+        <!--        <module>zspmall-coupon</module>-->
+        <!--        <module>zspmall-member</module>-->
+        <!--        <module>zspmall-order</module>-->
+        <!--        <module>zspmall-ware</module>-->
+        <!--        <module>renren-fast</module>-->
+        <!--        <module>renren-generator</module>-->
+        <!--        <module>zspmall-common</module>-->
         <module>zspoa-common</module>
     </modules>
 

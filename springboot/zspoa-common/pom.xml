@@ -12,12 +12,12 @@
     <artifactId>zspoa-common</artifactId>
     <description>oa系统的每一个微服务模块的公共依赖，bean，工具类</description>
     <dependencies>
-<!--        alinacos-->
+        <!--        alinacos-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
-<!--        数据库连接-->
+        <!--        数据库连接-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -36,18 +36,18 @@
             <version>1.18.16</version>
         </dependency>
 
-    <!--        使用java发送http请求的一个依赖，对应工具类的R-->
+        <!--        使用java发送http请求的一个依赖，对应工具类的R-->
 
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
             <version>4.4.12</version>
         </dependency>
-    <!--nacos发现-->
+        <!--nacos发现-->
         <dependency>
-        <groupId>com.alibaba.cloud</groupId>
-        <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-    </dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
     </dependencies>
     <!--    依赖管理，此后引入alibaba的相关依赖都不用写版本号了-->
     <dependencyManagement>
