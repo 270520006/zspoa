@@ -8,7 +8,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <properties>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
+    </properties>
     <artifactId>zspoa-common</artifactId>
     <description>oa系统的每一个微服务模块的公共依赖，bean，工具类</description>
     <dependencies>
