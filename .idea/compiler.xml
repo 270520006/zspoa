@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="zspoa-activiti" />
+        <module name="zspoa-gateway" />
         <module name="zspoa-common" />
       </profile>
     </annotationProcessing>
@@ -16,11 +17,13 @@
       <module name="springboot" target="1.5" />
       <module name="zspoa-activiti" target="1.8" />
       <module name="zspoa-common" target="1.5" />
+      <module name="zspoa-gateway" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="zspoa-activiti" options="-parameters" />
+      <module name="zspoa-gateway" options="-parameters" />
     </option>
   </component>
 </project>

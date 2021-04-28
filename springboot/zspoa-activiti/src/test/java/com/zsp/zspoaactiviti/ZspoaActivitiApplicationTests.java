@@ -9,7 +9,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class ZspoaActivitiApplicationTests {
-
+@Test
+	void test(){
+		System.out.println("zsp");
+	}
 	//    使用activity工作流先生成数据库表：23张
 	@Test
 	void testCreateTable() {
