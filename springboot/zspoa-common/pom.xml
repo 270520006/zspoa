@@ -15,6 +15,7 @@
     <artifactId>zspoa-common</artifactId>
     <description>oa系统的每一个微服务模块的公共依赖，bean，工具类</description>
     <dependencies>
+
         <!--        alinacos-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>

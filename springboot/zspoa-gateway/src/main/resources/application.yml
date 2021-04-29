@@ -1,0 +1,31 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: admin_router
+          uri: lb://zspoa-activiti
+          predicates:
+            - Path=/api/activiti/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*), /$\{segment}
+
+        - id: admin_router
+          uri: lb://renren-fast
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*), /renren-fast/$\{segment}
+        #这里的lb里面得写nacos配置的其他模块的微服务名称
+        #- Path=/api/** 会转发到的是http://localhost:8080/api/captcha.jpg
+        #但是原本应该发的地址应该是http://localhost:8080/renrenfast/captcha.jpg
+
+        - id: baidu_test
+          uri: https://www.baidu.com
+          predicates:
+            - Query=url,baidu
+#        访问http://localhost:88?url=baidu 会变成www.baidu.com
+        - id: qq_test
+          uri: https://www.qq.com
+          predicates:
+            - Query=url,qq
+
