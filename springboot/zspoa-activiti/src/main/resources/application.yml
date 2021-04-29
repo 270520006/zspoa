@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     data-password: 123456
-    url: jdbc:mysql://8.129.217.148:3310/zspoa_activiti?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://xxxxxx:3310/zspoa_activiti?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
     nacos:
