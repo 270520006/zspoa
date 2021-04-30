@@ -6,3 +6,5 @@
  
 
 ![整体架构图](C:\springcloud_vue\mdPhoto\整体架构图.png)
+
+转移到台式机，发现全爆红正在修改
