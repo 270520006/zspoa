@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: io.projectreactor.netty:reactor-netty:0.9.6.RELEASE">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.m2/repository/io/projectreactor/netty/reactor-netty/0.9.6.RELEASE/reactor-netty-0.9.6.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../DevInstall/repo/io/projectreactor/netty/reactor-netty/0.9.6.RELEASE/reactor-netty-0.9.6.RELEASE.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.m2/repository/io/projectreactor/netty/reactor-netty/0.9.6.RELEASE/reactor-netty-0.9.6.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../DevInstall/repo/io/projectreactor/netty/reactor-netty/0.9.6.RELEASE/reactor-netty-0.9.6.RELEASE-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$USER_HOME$/.m2/repository/io/projectreactor/netty/reactor-netty/0.9.6.RELEASE/reactor-netty-0.9.6.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../DevInstall/repo/io/projectreactor/netty/reactor-netty/0.9.6.RELEASE/reactor-netty-0.9.6.RELEASE-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

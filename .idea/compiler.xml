@@ -14,9 +14,9 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="activiti" target="1.5" />
-      <module name="springboot" target="1.5" />
+      <module name="springboot" target="1.8" />
       <module name="zspoa-activiti" target="1.8" />
-      <module name="zspoa-common" target="1.5" />
+      <module name="zspoa-common" target="1.8" />
       <module name="zspoa-gateway" target="1.8" />
     </bytecodeTargetLevel>
   </component>
