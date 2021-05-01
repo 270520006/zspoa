@@ -6,7 +6,8 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.2.6.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
+		<!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.zsp</groupId>
 	<artifactId>zspoa-activiti</artifactId>
@@ -27,7 +28,9 @@
 					<groupId>mysql</groupId>
 					<artifactId>mysql-connector-java</artifactId>
 				</exclusion>
+
 			</exclusions>
+
 		</dependency>
 <!--		连接池-->
 		<dependency>
@@ -42,10 +45,18 @@
 			<version>8.0.11</version>
 		</dependency>
 		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.76</version>
+		</dependency>
+		<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-boot-starter</artifactId>
 			<version>3.4.1</version>
 		</dependency>
+
+
+
 		<!--        MP的代码生成器-->
 		<dependency>
 			<groupId>com.baomidou</groupId>
@@ -69,6 +80,10 @@
 			<artifactId>activiti-engine</artifactId>
 			<version>7.1.0.M6</version>
 			<exclusions>
+				<exclusion>
+					<groupId>org.mybatis</groupId>
+					<artifactId>mybatis</artifactId>
+				</exclusion>
 				<exclusion>
 					<artifactId>slf4j-api</artifactId>
 					<groupId>org.slf4j</groupId>
@@ -129,23 +144,23 @@
 			</plugin>
 		</plugins>
 
-		<resources>
-			<resource>
-				<directory>src/main/java</directory>
-				<includes>
-					<include>**/*.xml</include>
-				</includes>
-			</resource>
-			<resource>
-				<directory>src/main/resources</directory>
-				<includes>
-					<include>**/*.xml</include>
-					<include>**/*.*</include>
-					<include>**/*.yml</include>
-					<include>**/*.properties</include>
-				</includes>
-			</resource>
-		</resources>
+<!--		<resources>-->
+<!--			<resource>-->
+<!--				<directory>src/main/java</directory>-->
+<!--				<includes>-->
+<!--					<include>**/*.xml</include>-->
+<!--				</includes>-->
+<!--			</resource>-->
+<!--			<resource>-->
+<!--				<directory>src/main/resources</directory>-->
+<!--				<includes>-->
+<!--					<include>**/*.xml</include>-->
+<!--					<include>**/*.*</include>-->
+<!--					<include>**/*.yml</include>-->
+<!--					<include>**/*.properties</include>-->
+<!--				</includes>-->
+<!--			</resource>-->
+<!--		</resources>-->
 	</build>
 
 
