@@ -32,5 +32,6 @@ public class ActRuTaskController {
 
         return R.ok().put("taskList",JSON.toJSONString(actRuTaskService.list()));
     }
+    
 }
 
