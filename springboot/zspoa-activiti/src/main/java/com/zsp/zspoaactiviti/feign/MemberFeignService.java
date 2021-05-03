@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Component
 @FeignClient(value = "zspoa-member")
 public interface MemberFeignService   {
-    @GetMapping("/member/list")
+    @GetMapping("member/list")
     public R memberList();
 
 }

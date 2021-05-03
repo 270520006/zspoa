@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zsp.utils.R;
 import com.zsp.zspoaactiviti.entity.ActRuTask;
+import com.zsp.zspoaactiviti.feign.MemberFeignService;
 import com.zsp.zspoaactiviti.service.ActRuTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,10 +28,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class ActRuTaskController {
     @Autowired
     ActRuTaskService actRuTaskService;
+    @Autowired
+    MemberFeignService memberFeignService;
     @GetMapping("/list")
     public R getTask(){
-
         return R.ok().put("taskList",JSON.toJSONString(actRuTaskService.list()));
+    }
+
+    @GetMapping("/member/list")
+    public R getMemberList(){
+        return memberFeignService.memberList();
     }
     
 }
