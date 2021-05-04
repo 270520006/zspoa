@@ -9,12 +9,18 @@ import com.zsp.zspoaactiviti.entity.ActRuTask;
 import com.zsp.zspoaactiviti.feign.MemberFeignService;
 import com.zsp.zspoaactiviti.service.ActRuTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -50,14 +56,25 @@ public class ActRuTaskController {
         return R.ok().put("taskList",taskList);
 
     }
-    public String getTaskListFromDB(){
+    public Map<String, ActRuTask> getTaskListFromDB(){
         System.out.println("通过数据库查询了流程任务表");
-        return JSON.toJSONString(actRuTaskService.list());
+        Map<String, ActRuTask> taskList = actRuTaskService.list()
+                                            .stream()
+                .collect(Collectors.toMap(ActRuTask::getId, actRuTask -> actRuTask));
+        return  taskList;
     }
 
     @GetMapping("/member/list")
+    @Cacheable(value = "memberList")
     public R getMemberList(){
         return memberFeignService.memberList();
+    }
+
+    @GetMapping("/member/add/{userName}/{userPassword}")
+    @CachePut(value = "memberList")
+    public R addMember(@PathVariable(value = "userName")String userName,
+                       @PathVariable(value = "userPassword")String userPassword){
+        return memberFeignService.addMember(userName,userPassword);
     }
     
 }
