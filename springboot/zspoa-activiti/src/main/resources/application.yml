@@ -9,6 +9,9 @@ spring:
       server-addr: 127.0.0.1:8848
   application:
     name: zspoa-activiti
+  redis:
+    host: 8.129.217.148
+    port: 6379
 server:
   port: 7000
 

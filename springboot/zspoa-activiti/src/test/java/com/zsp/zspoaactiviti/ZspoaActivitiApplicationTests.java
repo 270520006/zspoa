@@ -16,14 +16,26 @@ import org.activiti.engine.task.Task;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
 class ZspoaActivitiApplicationTests {
-
+	@Autowired
+	StringRedisTemplate stringRedisTemplate;
+	@Test
+	void testRedis(){
+		ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
+		ops.set("hello","I am zsp");
+		String hello =ops.get("hello");
+		System.out.println(hello);
+	}
 	@Test
 	void testCreateTable() {
 //        使用xml生成activity工作流
@@ -55,7 +67,7 @@ class ZspoaActivitiApplicationTests {
 		ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
 		//act_re_procdef表里的id，如果没生成，去看上一步，真是哔了狗
 		processEngine.getRuntimeService()
-				.startProcessInstanceById("myProcess_1:2:7504");
+				.startProcessInstanceById("myProcess_1:1:4");
 
 	}
 
