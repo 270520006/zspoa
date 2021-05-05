@@ -2,19 +2,22 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: admin_router
+        - id: activiti_router
           uri: lb://zspoa-activiti
           predicates:
-            - Path=/api/activiti/**
+            - Path=/api/acti/task/**
           filters:
             - RewritePath=/api/(?<segment>/?.*), /$\{segment}
-
-        - id: admin_router
-          uri: lb://renren-fast
+#            zspoa-activiti是nacos的服务名，相当于localhost:88会变成localhost:9000
+#          这个的意思就是你访问http://localhost:88/api/acti/task/list
+#          会被转发到http://localhost:7000/acti/task/list
+#          注意：这里的api会被去掉
+        - id: Member_router
+          uri: lb://zspoa-member
           predicates:
-            - Path=/api/**
+            - Path=/api/member/**
           filters:
-            - RewritePath=/api/(?<segment>/?.*), /renren-fast/$\{segment}
+            - RewritePath=/api/(?<segment>/?.*), /$\{segment}
         #这里的lb里面得写nacos配置的其他模块的微服务名称
         #- Path=/api/** 会转发到的是http://localhost:8080/api/captcha.jpg
         #但是原本应该发的地址应该是http://localhost:8080/renrenfast/captcha.jpg
