@@ -15,5 +15,6 @@ spring:
       ddl-auto: update
 server:
   port: 9000
-
-
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
