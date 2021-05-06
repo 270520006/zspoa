@@ -68,7 +68,7 @@ class ZspoaMemberApplicationTests {
         autoGenerator.setPackageInfo(pc);
 //        4.策略：映射对应的表
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setInclude("member"); //要映射的表名，要弄几个表出来，上面这是四个
+        strategy.setInclude("member","member_activity"); //要映射的表名，要弄几个表出来，上面这是四个
         strategy.setNaming(NamingStrategy.underline_to_camel); //开启包的命名规则,下划线转驼峰
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);//列也支持下划线转驼峰
         strategy.setEntityLombokModel(true);//开启lombok
