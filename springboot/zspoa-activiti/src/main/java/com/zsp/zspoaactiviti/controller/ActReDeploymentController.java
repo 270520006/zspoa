@@ -1,9 +1,19 @@
 package com.zsp.zspoaactiviti.controller;
 
 
+import com.alibaba.fastjson.JSON;
+import com.zsp.utils.R;
+import com.zsp.zspoaactiviti.entity.ActReDeployment;
+import com.zsp.zspoaactiviti.service.ActReDeploymentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -16,6 +26,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("acti/deployment")
 public class ActReDeploymentController {
+    @Autowired
+    ActReDeploymentService actReDeploymentService;
 
+    /**
+     * #root.methodName表示使用方法名作为分组名
+     * @return
+     */
+    @GetMapping("list")
+    @Cacheable(value = "deploymentList",key = "#root.methodName")
+    public R deploymentList(){
+        Map<String, ActReDeployment> deploymentMap = actReDeploymentService.list().stream()
+                .collect(Collectors.toMap(ActReDeployment::getId, actReDeployment -> actReDeployment));
+        System.out.println(R.ok().put("deploymentList", JSON.toJSONString(deploymentMap)));
+        return R.ok().put("deploymentList", JSON.toJSONString(deploymentMap));
+
+    }
 }
 

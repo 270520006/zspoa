@@ -12,6 +12,9 @@ spring:
   redis:
     host: 8.129.217.148
     port: 6379
+  cache:
+    type: redis
+    redis:
+      time-to-live: 3600
 server:
   port: 7000
-

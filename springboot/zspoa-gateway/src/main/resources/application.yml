@@ -5,7 +5,7 @@ spring:
         - id: activiti_router
           uri: lb://zspoa-activiti
           predicates:
-            - Path=/api/acti/task/**
+            - Path=/api/acti/**
           filters:
             - RewritePath=/api/(?<segment>/?.*), /$\{segment}
 #            zspoa-activiti是nacos的服务名，相当于localhost:88会变成localhost:9000

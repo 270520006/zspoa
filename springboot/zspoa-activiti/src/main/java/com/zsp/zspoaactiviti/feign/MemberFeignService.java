@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface MemberFeignService   {
     @GetMapping("member/list")
     public R memberList();
-    @GetMapping("/add/{userName}/{userPassword}")
+    @GetMapping("member/add/{userName}/{userPassword}")
     public R addMember(@PathVariable(value = "userName")String userName, @PathVariable(value = "userPassword") String userPassword );
-
+    @GetMapping("member/activity/select/{userId}")
+    public R selectByUserId(@PathVariable(value = "userId") Long userId);
 }

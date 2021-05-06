@@ -55,8 +55,8 @@ class ZspoaActivitiApplicationTests {
 
 		processEngine.getRepositoryService()//得到库服务
 				.createDeployment()//创建部署
-				.name("askRest")
-				.category("流程发起人")
+				.name("生病请假")
+				.category("鹏哥")
 				.addClasspathResource("bpm/rest.bpmn20.xml") //导入流程图  !!!!一定要加bpmn20
 				.addClasspathResource("bpm/rest.bpmn20.png")   //导入流程文件!!!!一定要加bpmn20
 				.deploy();   //开始部署
