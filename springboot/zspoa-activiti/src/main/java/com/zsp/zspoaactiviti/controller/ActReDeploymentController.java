@@ -33,7 +33,7 @@ public class ActReDeploymentController {
      * #root.methodName表示使用方法名作为分组名
      * @return
      */
-    @GetMapping("list")
+    @GetMapping("/list")
     @Cacheable(value = "deploymentList",key = "#root.methodName")
     public R deploymentList(){
         Map<String, ActReDeployment> deploymentMap = actReDeploymentService.list().stream()
