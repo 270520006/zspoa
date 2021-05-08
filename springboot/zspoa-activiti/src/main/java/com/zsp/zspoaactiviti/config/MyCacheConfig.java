@@ -21,10 +21,8 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 @EnableCaching
 public class MyCacheConfig {
-
     // @Autowired
     // public CacheProperties cacheProperties;
-
     /**
      * 配置文件的配置没有用上
      * @return
@@ -51,7 +49,6 @@ public class MyCacheConfig {
         if (!redisProperties.isUseKeyPrefix()) {
             config = config.disableKeyPrefix();
         }
-
         return config;
     }
 

@@ -10,7 +10,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
-@EnableCaching
+
 public class ZspoaActivitiApplication {
 
 	public static void main(String[] args) {

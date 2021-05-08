@@ -34,11 +34,12 @@ public class ActReDeploymentController {
      * @return
      */
     @GetMapping("/list")
-    @Cacheable(value = "deploymentList",key = "#root.methodName")
+    @Cacheable({"deploymentList"})
     public R deploymentList(){
+
         Map<String, ActReDeployment> deploymentMap = actReDeploymentService.list().stream()
                 .collect(Collectors.toMap(ActReDeployment::getId, actReDeployment -> actReDeployment));
-        System.out.println(R.ok().put("deploymentList", JSON.toJSONString(deploymentMap)));
+
         return R.ok().put("deploymentList", JSON.toJSONString(deploymentMap));
 
     }

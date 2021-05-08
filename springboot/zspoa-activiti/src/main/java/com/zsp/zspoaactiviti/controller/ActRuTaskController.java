@@ -9,6 +9,7 @@ import com.zsp.zspoaactiviti.entity.ActRuTask;
 import com.zsp.zspoaactiviti.feign.MemberFeignService;
 import com.zsp.zspoaactiviti.service.ActRuTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -65,13 +66,14 @@ public class ActRuTaskController {
     }
 
     @GetMapping("/member/list")
-    @Cacheable(value = "memberList")
+    @Cacheable(value = {"memberList"},key = "#root.methodName")
     public R getMemberList(){
-        return memberFeignService.memberList();
+        System.out.println("查询了数据库");
+        return R.ok().put("memberList",memberFeignService.memberList()) ;
     }
 
     @GetMapping("/member/add/{userName}/{userPassword}")
-    @CachePut(value = "memberList")
+    @CacheEvict(value = "memberList",key = "'getMemberList'")
     public R addMember(@PathVariable(value = "userName")String userName,
                        @PathVariable(value = "userPassword")String userPassword){
         return memberFeignService.addMember(userName,userPassword);
