@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long Id;
 
     @NotNull
     @Column(name = "user_name",columnDefinition = "varchar(40) COMMENT '这是用户账号'")

@@ -72,6 +72,8 @@ public class ActRuTaskController {
         return R.ok().put("memberList",memberFeignService.memberList()) ;
     }
 
+    
+
     @GetMapping("/member/add/{userName}/{userPassword}")
     @CacheEvict(value = "memberList",key = "'getMemberList'")
     public R addMember(@PathVariable(value = "userName")String userName,

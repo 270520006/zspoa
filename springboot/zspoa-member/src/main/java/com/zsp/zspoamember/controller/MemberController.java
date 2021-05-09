@@ -2,6 +2,7 @@ package com.zsp.zspoamember.controller;
 
 
 import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zsp.utils.R;
 import com.zsp.zspoamember.entity.Member;
 import com.zsp.zspoamember.service.MemberService;
@@ -13,6 +14,8 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * <p>
@@ -41,21 +44,25 @@ public class MemberController {
     }
 
     @GetMapping("/login/{userName}/{userPassword}")
-    public String login(@PathVariable(value = "userName") String userName,
-                        @PathVariable(value = "userPassword")String userPassword, Model model){
+    public R login(@PathVariable(value = "userName") String userName,
+                        @PathVariable(value = "userPassword")String userPassword,
+                        Model model, HttpSession session){
 
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(userName, userPassword);
+        QueryWrapper<Member> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("user_name",userName);
+        Member user = memberService.getOne(queryWrapper);
         try {
             subject.login(token);//执行登陆的方法
-            return "index";
+            return R.ok().put("login",user.getId());
         } catch (UnknownAccountException e) {
             model.addAttribute("msg","用户名错误");
-            return "login";
+            return R.error(404,"用户名错误");
         }catch (IncorrectCredentialsException e)
         {
             model.addAttribute("msg","密码错误");
-            return "login";
+            return R.error(404,"用户名密码错误");
         }
     }
 
