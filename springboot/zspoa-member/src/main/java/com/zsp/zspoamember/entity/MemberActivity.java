@@ -6,12 +6,13 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Entity(name = "member_activity")
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
-public class MemberActivity {
+public class MemberActivity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

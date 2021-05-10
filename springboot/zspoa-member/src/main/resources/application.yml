@@ -13,8 +13,13 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+  session:
+    store-type: redis
 server:
   port: 9000
+  servlet:
+    session:
+      timeout: 30m
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true

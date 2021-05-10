@@ -44,25 +44,27 @@ public class MemberController {
     }
 
     @GetMapping("/login/{userName}/{userPassword}")
-    public R login(@PathVariable(value = "userName") String userName,
+    public String login(@PathVariable(value = "userName") String userName,
                         @PathVariable(value = "userPassword")String userPassword,
                         Model model, HttpSession session){
 
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(userName, userPassword);
-        QueryWrapper<Member> queryWrapper = new QueryWrapper<>();
+        QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("user_name",userName);
-        Member user = memberService.getOne(queryWrapper);
+
+        Member member = memberService.getOne(queryWrapper);
+        UsernamePasswordToken token = new UsernamePasswordToken(userName, userPassword);
         try {
             subject.login(token);//执行登陆的方法
-            return R.ok().put("login",user.getId());
+            session.setAttribute("loginUser",member.getUserId());
+            return "index";
         } catch (UnknownAccountException e) {
             model.addAttribute("msg","用户名错误");
-            return R.error(404,"用户名错误");
+            return "login";
         }catch (IncorrectCredentialsException e)
         {
             model.addAttribute("msg","密码错误");
-            return R.error(404,"用户名密码错误");
+            return "login";
         }
     }
 
