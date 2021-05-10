@@ -15,6 +15,9 @@ spring:
       ddl-auto: update
   session:
     store-type: redis
+  redis:
+    host: 8.129.217.148
+    port: 6379
 server:
   port: 9000
   servlet:

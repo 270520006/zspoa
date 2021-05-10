@@ -35,6 +35,10 @@
                     <artifactId>mybatis-plus-boot-starter</artifactId>
                 </exclusion>
                 <exclusion>
+                    <groupId>org.springframework.session</groupId>
+                    <artifactId>spring-session-data-redis</artifactId>
+                </exclusion>
+                <exclusion>
                     <groupId>org.projectlombok</groupId>
                     <artifactId>lombok</artifactId>
                 </exclusion>

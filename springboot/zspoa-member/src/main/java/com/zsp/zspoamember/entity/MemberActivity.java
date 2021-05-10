@@ -13,6 +13,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 public class MemberActivity implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
