@@ -32,7 +32,11 @@
 			<artifactId>spring-session-core</artifactId>
 		</dependency>
 
-
+		<!--        thymeleaf依赖-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 
 <!--		排除mysql-->
 		<dependency>
