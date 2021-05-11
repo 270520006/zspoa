@@ -56,7 +56,7 @@ public class MemberController {
         UsernamePasswordToken token = new UsernamePasswordToken(userName, userPassword);
         try {
             subject.login(token);//执行登陆的方法
-            session.setAttribute("loginUser",member.getUserId());
+            session.setAttribute("loginUser",member.getId());
             return "index";
         } catch (UnknownAccountException e) {
             model.addAttribute("msg","用户名错误");

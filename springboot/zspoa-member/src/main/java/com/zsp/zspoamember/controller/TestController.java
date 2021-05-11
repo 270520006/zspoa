@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
+import java.util.Map;
+
 @RestController
 public class TestController {
 @Autowired
@@ -21,5 +24,9 @@ public class TestController {
         member.setUserName(userName);
         member.setUserPassword(userPassword);
         return R.ok().put("addMember",JSON.toJSONString(memberRepository.save(member)));
+    }
+    @GetMapping("member/getDep")
+    public Map testSession(HttpSession session){
+        return (Map) session.getAttribute("deploymentMap");
     }
 }

@@ -26,6 +26,14 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-data-redis</artifactId>
 			</dependency>
+		<!--SpringSession依赖-->
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session-core</artifactId>
+		</dependency>
+
+
+
 <!--		排除mysql-->
 		<dependency>
 			<groupId>com.zsp.springboot</groupId>

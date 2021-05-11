@@ -79,6 +79,7 @@ public class ActRuTaskController {
     public R addMember(@PathVariable(value = "userName")String userName,
                        @PathVariable(value = "userPassword")String userPassword){
         return memberFeignService.addMember(userName,userPassword);
+
     }
     @GetMapping("member/activity/select/{userId}")
     public R selectByUserId(@PathVariable(value = "userId" )Long userId){

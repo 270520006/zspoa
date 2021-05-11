@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -34,13 +35,12 @@ public class ActReDeploymentController {
      * @return
      */
     @GetMapping("/list")
-    @Cacheable({"deploymentList"})
+    @Cacheable(value = {"deploymentList"},key = "#root.methodName")
     public R deploymentList(){
 
         Map<String, ActReDeployment> deploymentMap = actReDeploymentService.list().stream()
                 .collect(Collectors.toMap(ActReDeployment::getId, actReDeployment -> actReDeployment));
-
-        return R.ok().put("deploymentList", JSON.toJSONString(deploymentMap));
+         return R.ok().put("deploymentList", JSON.toJSONString(deploymentMap));
 
     }
 }
