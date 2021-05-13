@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-     
-    <br/>
-    
     <router-view/>
   </div>
   
@@ -20,15 +17,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-}
-#app{
-  /* width: 100%; */
-   background-image: url("./assets/background.jpg");
-   background-repeat: no-repeat;
-   background-size:cover;
-}
-*{
-  padding: 0px;
-  margin: 0px;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
