@@ -1,6 +1,25 @@
 <template>
   <div class="hello">
-    
+{{userData}}      
+    <!-- <el-table
+      :data="userData"
+      style="width: 100%">
+      <el-table-column
+        prop="userName"
+        label="用户名"
+        width="180">
+      </el-table-column>
+      <el-table-column
+        prop="userPassword"
+        label="密码"
+        width="180">
+      </el-table-column>
+      <el-table-column
+        prop="userPhone"
+        label="电话">
+      </el-table-column>
+    </el-table> -->
+ 
   </div>
 </template>
 
@@ -9,8 +28,19 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      userData:[]
     }
+  },
+  methods:{
+    async nnn(){
+        const res = await this.$http.get('acti/task/member/list')
+        console.log(res.data.memberList.members);
+        this.userData=res.data.memberList.members;
+    }
+  },
+  created(){
+    this.nnn()
   }
 }
 </script>
