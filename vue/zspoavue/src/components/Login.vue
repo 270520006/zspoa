@@ -1,7 +1,13 @@
 <template>
-<div>
-  <div class="note" :style ="note">
-     
+  <div>
+    <div align="center">
+    <el-breadcrumb separator="/"  >
+      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
+      <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+      <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+    </el-breadcrumb>
+    </div>
     <div class="login-container">
       <el-form
         :model="ruleForm2"
@@ -13,13 +19,13 @@
         class="demo-ruleForm login-page"
       >
         <h3 class="title">系统登录</h3>
-        <el-form-item prop="username">
+        <el-form-item prop="username" >
           <el-input
             type="text"
             v-model="ruleForm2.username"
             auto-complete="off"
             placeholder="用户名"
-          ></el-input>
+           ></el-input>
         </el-form-item>
         <el-form-item prop="password">
           <el-input
@@ -27,6 +33,7 @@
             v-model="ruleForm2.password"
             auto-complete="off"
             placeholder="密码"
+             
           ></el-input>
         </el-form-item>
         <el-checkbox v-model="checked" class="rememberme">记住密码</el-checkbox>
@@ -41,8 +48,7 @@
         </el-form-item>
       </el-form>
     </div>
-   </div>
-</div>
+  </div>
 </template>
 
 <script>
@@ -67,38 +73,21 @@ export default {
         ],
       },
       checked: false,
-    //   note: {
-    //         backgroundImage: "url(" + require("../assets/background.jpg") + ")",
-    //         backgroundRepeat: "no-repeat",
-    //         backgroundSize: "25px auto",
-            
-    //       }
- 
     };
   },
   methods: {
     handleSubmit(event) {
-      this.$refs.ruleForm2.validate((valid) => {
-        if (valid) {
-          this.logining = true;
-          if (
-            this.ruleForm2.username === "admin" &&
-            this.ruleForm2.password === "123456"
-          ) {
-            this.logining = false;
-            sessionStorage.setItem("user", this.ruleForm2.username);
-            this.$router.push({ path: "/" });
-          } else {
-            this.logining = false;
-            this.$alert("username or password wrong!", "info", {
-              confirmButtonText: "ok",
-            });
-          }
-        } else {
-          console.log("error submit!");
-          return false;
-        }
-      });
+      console.log(this.ruleForm2.username);
+      console.log(this.ruleForm2.password);
+      const res =  this.$http.get('acti/deployment/testMember',{
+        'userName': this.ruleForm2.username,
+        'userPassword': this.ruleForm2.password
+      })
+      .then(function(response){
+        this.result=response;
+        console.log(this.result.data);
+      })
+      ;
     },
   },
 };
@@ -123,5 +112,4 @@ label.el-checkbox.rememberme {
   margin: 0px 0px 15px;
   text-align: left;
 }
-
 </style>

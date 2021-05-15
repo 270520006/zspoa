@@ -7,10 +7,7 @@ import com.zsp.zspoaactiviti.entity.ActReDeployment;
 import com.zsp.zspoaactiviti.service.ActReDeploymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.Map;
@@ -29,6 +26,28 @@ import java.util.stream.Collectors;
 public class ActReDeploymentController {
     @Autowired
     ActReDeploymentService actReDeploymentService;
+    @PostMapping("/isMember")
+    public R isMember(String userName,String userPassword){
+        System.out.println(userName+"===="+userPassword);
+        if (userName.equals("root")&&userPassword.equals("123456"))
+        {
+            return R.ok().put("status","ok");
+        }
+
+        return R.ok().put("status","no");
+    }
+
+    @GetMapping("/testMember/{userName}/{userPassword}")
+    public R testMember(@PathVariable(value = "userName") String userName,
+                        @PathVariable(value = "userPassword")String userPassword){
+        System.out.println(userName+"===="+userPassword);
+        if (userName.equals("root")&&userPassword.equals("123456"))
+        {
+            return R.ok().put("status","ok");
+        }
+
+        return R.ok().put("status","no");
+    }
 
     /**
      * #root.methodName表示使用方法名作为分组名

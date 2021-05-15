@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zsp.utils.R;
+import com.zsp.zspoaactiviti.entity.ActReDeployment;
 import com.zsp.zspoaactiviti.entity.ActRuTask;
 import com.zsp.zspoaactiviti.feign.MemberFeignService;
 import com.zsp.zspoaactiviti.service.ActRuTaskService;
@@ -69,6 +70,8 @@ public class ActRuTaskController {
     @Cacheable(value = {"memberList"},key = "#root.methodName")
     public R getMemberList(){
         System.out.println("查询了数据库");
+
+
         return R.ok().put("memberList",memberFeignService.memberList()) ;
     }
 
@@ -83,7 +86,8 @@ public class ActRuTaskController {
     }
     @GetMapping("member/activity/select/{userId}")
     public R selectByUserId(@PathVariable(value = "userId" )Long userId){
-        return memberFeignService.selectByUserId(userId);
+        return R.ok().put("user",memberFeignService.selectByUserId(userId)) ;
+
     }
 
 

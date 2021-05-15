@@ -1,9 +1,7 @@
 package com.zsp.zspoaactiviti.controller;
 
 import com.zsp.utils.R;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +11,15 @@ import javax.servlet.http.HttpSession;
 @RestController
 @RequestMapping("acti/task")
 public class MemberActController {
+    @PostMapping("/isMember")
+    public R isMember(String userName,String userPassword){
+        if (userName.equals("root")&&userPassword.equals("123456"))
+        {
+            return R.ok().put("status","ok");
+        }
+
+        return R.ok().put("status","no");
+    }
 
     @GetMapping("/createTask")
     public R creatActTask(HttpSession session){

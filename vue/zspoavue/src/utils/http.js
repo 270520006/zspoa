@@ -3,7 +3,7 @@ import axios from 'axios'
 // import router from './router/index.js'
 
 const http=axios.create({
-    baseURL:'http://zspoa.com:88/api/'
+    baseURL:'http://zspoa.com/api/'
 })
 
 export default http;

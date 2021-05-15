@@ -1,16 +1,18 @@
 <template>
-  <div id="app">
+  <div id="background">
+     
      
     <br/>
-    
     <router-view/>
+    <br/>
   </div>
   
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+
 }
 </script>
 
@@ -21,7 +23,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
-#app{
+#background{
   /* width: 100%; */
    background-image: url("./assets/background.jpg");
    background-repeat: no-repeat;
