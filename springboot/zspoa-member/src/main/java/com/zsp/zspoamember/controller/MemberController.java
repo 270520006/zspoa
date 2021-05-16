@@ -48,24 +48,13 @@ public class MemberController {
                         @PathVariable(value = "userPassword")String userPassword,
                         Model model, HttpSession session){
 
-        Subject subject = SecurityUtils.getSubject();
+
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("user_name",userName);
 
         Member member = memberService.getOne(queryWrapper);
-        UsernamePasswordToken token = new UsernamePasswordToken(userName, userPassword);
-        try {
-            subject.login(token);//执行登陆的方法
-            session.setAttribute("loginUser",member.getId());
-            return "index";
-        } catch (UnknownAccountException e) {
-            model.addAttribute("msg","用户名错误");
-            return "login";
-        }catch (IncorrectCredentialsException e)
-        {
-            model.addAttribute("msg","密码错误");
-            return "login";
-        }
+        session.setAttribute("Member",member.toString());
+         return member.toString();
     }
 
 }

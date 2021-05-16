@@ -1,5 +1,6 @@
 package com.zsp.zspoaactiviti.controller;
 
+import com.netflix.ribbon.proxy.annotation.Http;
 import com.zsp.utils.R;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,5 +27,8 @@ public class MemberActController {
         Long userId = (Long) session.getAttribute("userId");
         return R.ok().put("userId",userId);
     }
-
+    @GetMapping("/test")
+    public R getSession(HttpSession session){
+        return R.ok().put("member",session.getAttribute("Member"));
+    }
 }

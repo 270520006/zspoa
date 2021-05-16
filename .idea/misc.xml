@@ -4,9 +4,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/springboot/pom.xml" />
-        <option value="$PROJECT_DIR$/springboot/zspoa-gateway/pom.xml" />
-        <option value="$PROJECT_DIR$/springboot/zspoa-activiti/pom.xml" />
-        <option value="$PROJECT_DIR$/springboot/zspoa-member/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot/zspoa-auth-server/pom.xml" />
       </list>
     </option>
   </component>
