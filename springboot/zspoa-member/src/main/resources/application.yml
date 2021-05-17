@@ -17,7 +17,7 @@ spring:
     store-type: redis
   redis:
     host: 8.129.217.148
-    port: 6379
+    port: 6888
 server:
   port: 9000
   servlet:

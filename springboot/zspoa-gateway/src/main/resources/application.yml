@@ -22,13 +22,22 @@ spring:
         #- Path=/api/** 会转发到的是http://localhost:8080/api/captcha.jpg
         #但是原本应该发的地址应该是http://localhost:8080/renrenfast/captcha.jpg
 
-        - id: baidu_test
-          uri: https://www.baidu.com
+        - id: zspoa_auth_route
+          uri: lb://zspoa-auth-server
           predicates:
-            - Query=url,baidu
-#        访问http://localhost:88?url=baidu 会变成www.baidu.com
-        - id: qq_test
-          uri: https://www.qq.com
-          predicates:
-            - Query=url,qq
+            - Host=auth.zspoa.com
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+#        - id: baidu_test
+#          uri: https://www.baidu.com
+#          predicates:
+#            - Query=url,baidu
+##        访问http://localhost:88?url=baidu 会变成www.baidu.com
+#        - id: qq_test
+#          uri: https://www.qq.com
+#          predicates:
+#            - Query=url,qq

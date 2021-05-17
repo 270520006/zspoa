@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="zspoa-activiti" />
         <module name="zspoa-member" />
+        <module name="zspoa-auth-server" />
         <module name="zspoa-gateway" />
         <module name="zspoa-common" />
       </profile>
@@ -17,6 +18,7 @@
       <module name="activiti" target="1.5" />
       <module name="springboot" target="1.5" />
       <module name="zspoa-activiti" target="1.8" />
+      <module name="zspoa-auth-server" target="1.8" />
       <module name="zspoa-common" target="1.5" />
       <module name="zspoa-gateway" target="1.8" />
       <module name="zspoa-member" target="1.8" />
@@ -25,6 +27,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="zspoa-activiti" options="-parameters" />
+      <module name="zspoa-auth-server" options="-parameters" />
       <module name="zspoa-gateway" options="-parameters" />
       <module name="zspoa-member" options="-parameters" />
     </option>

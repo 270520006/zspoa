@@ -11,7 +11,7 @@ spring:
     name: zspoa-activiti
   redis:
     host: 8.129.217.148
-    port: 6379
+    port: 6888
   cache:
     redis:
       cache-null-values: true
