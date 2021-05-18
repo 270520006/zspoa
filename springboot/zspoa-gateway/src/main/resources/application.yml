@@ -32,6 +32,8 @@ management:
     web:
       exposure:
         include: '*'
+
+
 #        - id: baidu_test
 #          uri: https://www.baidu.com
 #          predicates:
