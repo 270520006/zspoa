@@ -33,7 +33,11 @@
             <artifactId>spring-session-data-redis</artifactId>
             <version>2.2.6.RELEASE</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.76</version>
+        </dependency>
         <!--        mp的依赖-->
         <dependency>
             <groupId>com.baomidou</groupId>

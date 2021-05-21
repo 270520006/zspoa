@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/springboot/zspoa-common/zspoa-common.iml" filepath="$PROJECT_DIR$/springboot/zspoa-common/zspoa-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot/zspoa-gateway/zspoa-gateway.iml" filepath="$PROJECT_DIR$/springboot/zspoa-gateway/zspoa-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot/zspoa-member/zspoa-member.iml" filepath="$PROJECT_DIR$/springboot/zspoa-member/zspoa-member.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot/zspoa-search/zspoa-search.iml" filepath="$PROJECT_DIR$/springboot/zspoa-search/zspoa-search.iml" />
     </modules>
   </component>
 </project>
