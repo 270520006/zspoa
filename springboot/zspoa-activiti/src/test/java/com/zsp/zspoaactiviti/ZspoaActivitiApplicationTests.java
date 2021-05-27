@@ -29,6 +29,7 @@ import java.util.List;
 class ZspoaActivitiApplicationTests {
 	@Autowired
 	StringRedisTemplate stringRedisTemplate;
+
 	@Test
 	void testRedis(){
 		ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();

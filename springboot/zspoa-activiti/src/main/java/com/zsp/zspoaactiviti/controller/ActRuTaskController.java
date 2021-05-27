@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -42,6 +43,9 @@ public class ActRuTaskController {
     MemberFeignService memberFeignService;
     @Autowired
     StringRedisTemplate stringRedisTemplate;
+
+
+
     @GetMapping("/list")
     public R getTaskListJson(){
         String taskList = stringRedisTemplate.opsForValue().get("taskList");
@@ -67,11 +71,12 @@ public class ActRuTaskController {
     }
 
     @GetMapping("/member/list")
-    @Cacheable(value = {"memberList"},key = "#root.methodName")
-    public R getMemberList(){
+    @Cacheable(value = {"memberList"},key = "#root.methodName",sync = true)
+    public R getMemberList(HttpSession session){
         System.out.println("查询了数据库");
 
-
+        Object member = session.getAttribute("Member");
+        System.out.println(member.toString());
         return R.ok().put("memberList",memberFeignService.memberList()) ;
     }
 

@@ -16,6 +16,8 @@ spring:
     redis:
       cache-null-values: true
       key-prefix: ACTI_
+      time-to-live: 3600000
+#设置空值存储，前缀，过期时间：毫秒为单位
   session:
     store-type: redis
 #springsesssion的配置
