@@ -1,10 +1,8 @@
 package com.zsp.zspoasearch.Controller;
 
-
 import com.alibaba.fastjson.JSON;
 import com.zsp.utils.R;
 import com.zsp.zspoasearch.config.ElasticSearchConfig;
-import com.zsp.zspoasearch.feign.MemberFeignService;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RestHighLevelClient;
@@ -12,7 +10,6 @@ import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,19 +19,14 @@ import java.util.ArrayList;
 import java.util.Map;
 
 @RestController
-@RequestMapping("search/member")
-public class MemberSearchController {
+@RequestMapping("search/acti")
+public class ActiActinstSearchController {
     @Autowired
     private RestHighLevelClient restHighLevelClient;
-    @Autowired
-    MemberFeignService memberFeignService;
-    @GetMapping("/list")
-    @Cacheable(value = {"memberList"},key = "#root.methodName")
+    @GetMapping("/actinst/list")
     public R searchMemberList(){
-
 //        1、建立搜索引擎
-        SearchRequest searchRequest =new SearchRequest("zspoa_member");
-
+        SearchRequest searchRequest =new SearchRequest("act_actinst");
 //        2、建立搜索对象
         SearchSourceBuilder sourceBuilder =new SearchSourceBuilder();
 //        3、简历搜索工具
@@ -48,14 +40,11 @@ public class MemberSearchController {
                 Map<String, Object> map = hit.getSourceAsMap();
                 list.add((map));
             }
-            return R.ok().put("memberList",JSON.toJSON(list));
-        } catch (Exception e) {
-            System.out.println("redis缓存没有查询到，查询es没有，最后查询了数据库");
-            return memberFeignService.memberList();
-
+            return R.ok().put("actinstList", JSON.toJSON(list));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-
+        return R.error().put("actinstList",null);
     }
-
 }

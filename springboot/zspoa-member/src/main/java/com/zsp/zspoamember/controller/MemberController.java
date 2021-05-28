@@ -33,7 +33,8 @@ public class MemberController {
     MemberService memberService;
     @GetMapping("/list")
     public R getAllMember(){
-        return R.ok().put("members", JSON.toJSONString(memberService.list()));
+
+        return R.ok().put("memberList", JSON.toJSON(memberService.list()));
     }
     @GetMapping("/add/{userName}/{userPassword}")
     public R addMember(@PathVariable String userName, @PathVariable String userPassword ){
