@@ -31,6 +31,25 @@ public class MemberController {
 
     @Autowired
     MemberService memberService;
+    @PostMapping("/regist")
+    public R userRegist(String userName,String userPhone){
+        QueryWrapper queryUserName = new QueryWrapper();
+        QueryWrapper queryUserPhone=new QueryWrapper();
+        queryUserName.eq("user_name",userName);
+        queryUserPhone.eq("user_phone",Integer.parseInt(userPhone));
+        Member memberName = memberService.getOne(queryUserName);
+        Member memberPhone = memberService.getOne(queryUserPhone);
+        if (memberName!=null){
+            return R.error().put("registMsg","此账户已被注册");
+        }
+        if (memberPhone!=null)
+        {
+            return R.error().put("registMsg","电话号码已被注册");
+
+        }
+
+        return R.ok().put("registMsg","注册成功！");
+    }
     @GetMapping("/list")
     public R getAllMember(){
 

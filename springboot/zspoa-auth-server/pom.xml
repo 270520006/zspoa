@@ -18,6 +18,12 @@
         <spring-cloud.version>2020.0.2</spring-cloud.version>
     </properties>
     <dependencies>
+<!--        jsr303校验，用于验证entity属性是否符合要求-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.zsp.springboot</groupId>
             <artifactId>zspoa-common</artifactId>
@@ -36,6 +42,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>2.2.6.RELEASE</version>
         </dependency>
 
         <dependency>
