@@ -20,8 +20,8 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/auth")
 public class LoginController {
-//    @Autowired
-//    MemberFeignService memberFeignService;
+    @Autowired
+    MemberFeignService memberFeignService;
     @PostMapping("/regist")
     public R userRegist(@Valid UserRegist userRegist, BindingResult result){
         System.out.println(userRegist);
@@ -32,7 +32,7 @@ public class LoginController {
 
             return R.error().put("registMsg", JSON.toJSON(errors));
         }
-            return R.ok().put("registMsg","注册成功！");
-//        return memberFeignService.memberRegist(userRegist.getUsername(),userRegist.getPhone());
+//            return R.ok().put("registMsg","注册成功！");
+        return memberFeignService.memberRegist(userRegist.getUsername(),userRegist.getPhone());
     }
 }
