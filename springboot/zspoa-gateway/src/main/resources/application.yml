@@ -19,6 +19,13 @@ spring:
           filters:
             - RewritePath=/api/(?<segment>/?.*), /$\{segment}
 
+        - id: auth_router
+          uri: lb://zspoa-auth-server
+          predicates:
+            - Path=/api/auth/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*), /$\{segment}
+
         - id: Member_router
           uri: lb://zspoa-member
           predicates:
