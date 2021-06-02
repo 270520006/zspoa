@@ -27,8 +27,8 @@ public class Member implements Serializable {
     private String userPassword;
 
 
-    @Column(name = "user_phone",columnDefinition = "int(40) COMMENT '用户电话'")
-    private int  userPhone=10086;
+    @Column(name = "user_phone",columnDefinition = "bigint COMMENT '用户电话'")
+    private Long  userPhone=10086l;
 
 
     @Column(name = "user_email",columnDefinition = "varchar(40) COMMENT '这是用户邮箱'")
