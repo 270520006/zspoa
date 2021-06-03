@@ -33,10 +33,11 @@ public class MemberController {
     MemberService memberService;
     @PostMapping("/regist")
     public R userRegist(String userName,String userPhone){
+        System.out.println(userName+"电话是："+userPhone);
         QueryWrapper queryUserName = new QueryWrapper();
         QueryWrapper queryUserPhone=new QueryWrapper();
         queryUserName.eq("user_name",userName);
-        queryUserPhone.eq("user_phone",Integer.parseInt(userPhone));
+        queryUserPhone.eq("user_phone",Long.parseLong(userPhone));
         Member memberName = memberService.getOne(queryUserName);
         Member memberPhone = memberService.getOne(queryUserPhone);
         if (memberName!=null){
