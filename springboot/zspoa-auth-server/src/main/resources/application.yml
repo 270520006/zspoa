@@ -4,5 +4,20 @@ spring:
       server-addr: 127.0.0.1:8848
   application:
     name: zspoa-auth-server
+  redis:
+    host: 8.129.217.148
+    port: 6888
+  cache:
+    redis:
+      cache-null-values: true
+      key-prefix: ACTI_
+      time-to-live: 3600000
+  #设置空值存储，前缀，过期时间：毫秒为单位
+  session:
+    store-type: redis
+
 server:
   port: 20000
+  servlet:
+    session:
+      timeout: 30m

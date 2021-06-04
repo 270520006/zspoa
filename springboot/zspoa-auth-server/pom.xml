@@ -18,11 +18,7 @@
         <spring-cloud.version>2020.0.2</spring-cloud.version>
     </properties>
     <dependencies>
-<!--        jsr303校验，用于验证entity属性是否符合要求-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
+
 
         <dependency>
             <groupId>com.zsp.springboot</groupId>
@@ -32,10 +28,6 @@
                 <exclusion>
                     <groupId>com.baomidou</groupId>
                     <artifactId>mybatis-plus-boot-starter</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework.session</groupId>
-                    <artifactId>spring-session-data-redis</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -49,7 +41,10 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
             <version>2.2.6.RELEASE</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
