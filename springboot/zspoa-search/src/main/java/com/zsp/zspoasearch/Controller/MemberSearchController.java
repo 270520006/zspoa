@@ -28,6 +28,7 @@ public class MemberSearchController {
     private RestHighLevelClient restHighLevelClient;
     @Autowired
     MemberFeignService memberFeignService;
+
     @GetMapping("/list")
     @Cacheable(value = {"memberList"},key = "#root.methodName")
     public R searchMemberList(){

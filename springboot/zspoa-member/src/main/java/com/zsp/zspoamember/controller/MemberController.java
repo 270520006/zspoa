@@ -53,7 +53,6 @@ public class MemberController {
     }
     @GetMapping("/list")
     public R getAllMember(){
-
         return R.ok().put("memberList", JSON.toJSON(memberService.list()));
     }
     @GetMapping("/add/{userName}/{userPassword}")
