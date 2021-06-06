@@ -32,7 +32,7 @@ public class MemberController {
     @Autowired
     MemberService memberService;
     @PostMapping("/regist")
-    public R userRegist(String userName,String userPhone){
+    public R userRegist(String userName,String password,String userPhone){
         System.out.println(userName+"电话是："+userPhone);
         QueryWrapper queryUserName = new QueryWrapper();
         QueryWrapper queryUserPhone=new QueryWrapper();
@@ -48,8 +48,16 @@ public class MemberController {
             return R.error().put("registMsg","电话号码已被注册");
 
         }
-
-        return R.ok().put("registMsg","注册成功！");
+        try {
+            Member member = new Member();
+            member.setUserName(userName);
+            member.setUserPhone(Long.parseLong(userPhone));
+            member.setUserPassword(password);
+            memberService.save(member);
+            return R.ok().put("registMsg","注册成功！");
+        } catch (NumberFormatException e) {
+            return R.error().put("registMsg","存入数据库失败！");
+        }
     }
     @GetMapping("/list")
     public R getAllMember(){

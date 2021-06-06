@@ -13,5 +13,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface MemberFeignService {
 
     @PostMapping("member/regist")
-    public R memberRegist(@RequestParam("userName") String userName, @RequestParam("userPhone") String userPhone);
+    public R memberRegist(@RequestParam("userName") String userName,@RequestParam("password") String password, @RequestParam("userPhone") String userPhone);
 }
