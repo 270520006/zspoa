@@ -39,9 +39,6 @@ public class LoginController {
     @PostMapping("/login")
     public R userLogin(@Valid User user, BindingResult result,
                        HttpServletResponse response, HttpSession session){
-
-        searchFeignService.searchMemberList().get("memberList");
-
         return loginService.userLogin(user,result,response,session);
     }
 
