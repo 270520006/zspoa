@@ -5,6 +5,8 @@ import com.alibaba.fastjson.JSON;
 import com.zsp.utils.R;
 import com.zsp.zspoaactiviti.entity.ActReDeployment;
 import com.zsp.zspoaactiviti.service.ActReDeploymentService;
+import org.activiti.engine.ProcessEngine;
+import org.activiti.engine.ProcessEngines;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +28,24 @@ import java.util.stream.Collectors;
 public class ActReDeploymentController {
     @Autowired
     ActReDeploymentService actReDeploymentService;
+
+
+    @PostMapping("/createDeployment")
+    public R createDeployment(@RequestParam("proID") String proID,HttpSession session){
+
+        System.out.println(session.getAttribute("user"));
+        try {
+            ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+            //act_re_procdef表里的id，如果没生成，去看上一步，真是哔了狗
+            String id = processEngine.getRuntimeService()
+                    .startProcessInstanceById(proID).getId();
+            System.out.println(id);
+
+        } catch (Exception e) {
+            return R.error().put("createDeploymentMsg","创建流程失败！");
+        }
+        return R.ok().put("createDeploymentMsg","创建流程成功！");
+    }
     @PostMapping("/isMember")
     public R isMember(String userName,String userPassword){
         System.out.println(userName+"===="+userPassword);
@@ -55,12 +75,11 @@ public class ActReDeploymentController {
      */
     @GetMapping("/list")
     @Cacheable(value = {"deploymentList"},key = "#root.methodName")
-    public R deploymentList(){
+    public R getDeploymentList(){
 
         Map<String, ActReDeployment> deploymentMap = actReDeploymentService.list().stream()
                 .collect(Collectors.toMap(ActReDeployment::getId, actReDeployment -> actReDeployment));
          return R.ok().put("deploymentList", JSON.toJSONString(deploymentMap));
-
     }
 }
 

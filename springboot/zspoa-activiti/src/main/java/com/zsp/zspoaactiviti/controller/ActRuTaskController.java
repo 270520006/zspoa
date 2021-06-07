@@ -9,19 +9,18 @@ import com.zsp.zspoaactiviti.entity.ActReDeployment;
 import com.zsp.zspoaactiviti.entity.ActRuTask;
 import com.zsp.zspoaactiviti.feign.MemberFeignService;
 import com.zsp.zspoaactiviti.service.ActRuTaskService;
+import org.activiti.engine.ProcessEngine;
+import org.activiti.engine.ProcessEngines;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -46,28 +45,28 @@ public class ActRuTaskController {
 
 
 
-    @GetMapping("/list")
-    public R getTaskListJson(){
-        String taskList = stringRedisTemplate.opsForValue().get("taskList");
-        System.out.println("查找的结果"+taskList);
-        if (StringUtils.isEmpty(taskList))
-        {
-            System.out.println("进入了方法");
-            String str =JSON.toJSONString(getTaskListFromDB());
-            System.out.println("查找了数据库");
-            stringRedisTemplate.opsForValue().set("taskList", str);
-            System.out.println(str);
-            return   R.ok().put("taskList",str);
+    @PostMapping("/allowDeployment")
+    public R allowDeployment(@RequestParam("instID") String instID,HttpSession session){
+        try {
+            QueryWrapper<ActRuTask> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("PROC_INST_ID_",instID);
+            ActRuTask ruTask = actRuTaskService.getOne(queryWrapper);
+            System.out.println(ruTask);
+            String id = ruTask.getId();
+            System.out.println(id);
+            ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+//    查看act_ru_task表，然后把id给上，发起请假申请
+            processEngine.getTaskService()
+                    .complete(id);
+        } catch (Exception e) {
+            return R.error().put("allowDeploymentMsg","发生错误！");
         }
-        return R.ok().put("taskList",taskList);
-
+        return R.ok().put("allowDeploymentMsg","审批流程通过！");
     }
-    public Map<String, ActRuTask> getTaskListFromDB(){
-        System.out.println("通过数据库查询了流程任务表");
-        Map<String, ActRuTask> taskList = actRuTaskService.list()
-                                            .stream()
-                .collect(Collectors.toMap(ActRuTask::getId, actRuTask -> actRuTask));
-        return  taskList;
+    @GetMapping("/list")
+    @Cacheable(value = {"taskList"},key = "#root.methodName")
+    public R getTaskList(){
+        return R.ok().put("taskList",JSON.toJSONString(actRuTaskService.list()));
     }
 
     @GetMapping("/member/list")

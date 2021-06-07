@@ -68,7 +68,7 @@ class ZspoaActivitiApplicationTests {
 		ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
 		//act_re_procdef表里的id，如果没生成，去看上一步，真是哔了狗
 		processEngine.getRuntimeService()
-				.startProcessInstanceById("myProcess_1:1:4");
+				.startProcessInstanceById("myProcess_1:2:17504");
 
 	}
 
@@ -79,7 +79,7 @@ class ZspoaActivitiApplicationTests {
 		ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
 //    查看act_ru_task表，然后把id给上，发起请假申请
 		processEngine.getTaskService()
-				.complete("2505");
+				.complete("7502");
 
 	}
 	//    4、老师查看请假要求

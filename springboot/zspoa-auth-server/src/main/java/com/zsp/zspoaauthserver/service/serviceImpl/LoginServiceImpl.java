@@ -58,6 +58,7 @@ public class LoginServiceImpl implements LoginService {
         String userToken = JwtUtils.generateJsonWebToken(user);
         response.setHeader("userToken",userToken);
         session.setAttribute("userToken",userToken);
+        session.setAttribute("user",user);
         System.out.println("加密后的token是："+userToken);
         return R.ok().put("loginMsg","登陆成功");
     }
